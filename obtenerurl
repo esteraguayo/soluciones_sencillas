@@ -1,0 +1,17 @@
+def url_recomend(data):
+    info = {}
+    info['id'] = data['id']
+    try:
+        nsection = len(data['modules']['embedBodyModules'])
+        for i in range(nsection):
+            notasaux=[]
+            if data['modules']['embedBodyModules'][i]['type']=='nd_related_news_detail':
+                for j in range(len(data['modules']['embedBodyModules'][i]['modules'])):
+                    notasaux.append(data['modules']['embedBodyModules'][i]['modules'][j]['content']['slug']['link'])
+                info['titlesection'] = data['modules']['embedBodyModules'][i]['title']
+                info['urlrecomend'] =  notasaux
+    except:
+        info['titlesection'] = None
+        info['urlrecomend'] = None 
+    return info
+    
